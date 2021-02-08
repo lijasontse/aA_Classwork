@@ -1,4 +1,3 @@
-require 'set'
 class PolyTreeNode
 
     attr_reader :value, :parent, :children
@@ -54,18 +53,29 @@ class PolyTreeNode
 
     def dfs(target)
         return self if self.value == target 
-        return nil if self.children.empty?       
-        
-        self.children.each do |child|                       
-            return child.dfs(target)         
+        # return nil if self.children.empty?       
+        self.children.each do |child|
+            # if !child.children.empty? 
+            # won't run code in the block when array is empty 
+                memo = child.dfs(target)                     
+                return memo if !memo.nil?
+            # end        
         end
-        return nil         
+        nil       
     end
 
 
     
-    def bfs
-
+    def bfs(target)
+        queue = [self]
+        visited = []
+        while queue.length > 0 
+            check = queue.shift 
+            return check if check.value == target 
+            visited << check unless visited.include?(check)
+            check.children.each { |child| queue << child unless visited.include?(child) }
+            return nil if queue.empty? 
+        end
 
     end
 #     should take correct path to descendant (FAILED - 19)
