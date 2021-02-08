@@ -133,16 +133,16 @@ describe 'Searchable' do
     end
   end
 
-  describe "#bfs" do
-    let(:search_method) { :bfs }
-    it_behaves_like 'search method'
+  # describe "#bfs" do
+  #   let(:search_method) { :bfs }
+  #   it_behaves_like 'search method'
 
-    it "should take correct path to descendant" do
-      expect(nodes[6]).to_not receive(:value)
-      [0, 1, 2, 3, 4, 5].each do |index|
-        expect(nodes[index]).to receive(:value).and_call_original.ordered
-      end
-      expect(nodes.first.bfs('f')).to equal(nodes[5])
-    end
-  end
-end
+  #   it "should take correct path to descendant" do
+  #     expect(nodes[6]).to_not receive(:value)
+  #     [0, 1, 2, 3, 4, 5].each do |index|
+  #       expect(nodes[index]).to receive(:value).and_call_original.ordered
+  #     end
+  #     expect(nodes.first.bfs('f')).to equal(nodes[5])
+  #   end
+  # end
+ end

@@ -1,3 +1,4 @@
+require 'set'
 class PolyTreeNode
 
     attr_reader :value, :parent, :children
@@ -53,37 +54,16 @@ class PolyTreeNode
 
     def dfs(target)
         return self if self.value == target 
-        return nil if self.children.empty?
-        mid_idx = @children.length / 2
-        left_children = @children[0...mid_idx]
-        right_children = @children[mid_idx..-1]
-
-
-        left_children.each do |child|
-            puts value
-            child.dfs(target)
-        end
-
-        right_children.each do |child|
-            puts value
-            child.dfs(target)
-        end
-
-
+        return nil if self.children.empty?       
         
-        # return nil if @children == [] 
-        # return nil if @parent.nil? 
-        # self.parent.each do |parent, children|
-        #     children.each do |child|
-        #         return child.dfs(target)
-        #     end
-        # end
+        self.children.each do |child|                       
+            return child.dfs(target)         
+        end
+        return nil         
     end
-#     should take correct path to descendant (FAILED - 15)
-#     behaves like search method
-#       should return itself if it contains the value (FAILED - 16)
-#       should find descendant (FAILED - 17)
-#       should return nil when value is not found (FAILED - 18)
+
+
+    
     def bfs
 
 
