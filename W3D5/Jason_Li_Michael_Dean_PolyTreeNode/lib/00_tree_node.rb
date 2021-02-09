@@ -2,13 +2,10 @@ class PolyTreeNode
 
     attr_reader :value, :parent, :children
 
-    def initialize(value, parent=nil)
+    def initialize(value = nil)
         @value = value        
         @children = []        
-        @parent.nil? ? @parent = nil : @parent = Hash.new(){|h, k| h[parent] = @children}        
-   # { parent => [value] } |h, k| h[k] = []
-
-   
+        @parent = nil 
     end
 
 
@@ -31,12 +28,7 @@ class PolyTreeNode
 
 
     def add_child(child)
-        if !self.children.include?(child)
-            @children << child
-            child.parent = self 
-        end
-        # should pass itself to the child's parent= (FAILED - 11)
-        # doesn't add the child twice (FAILED - 12)
+        child.parent = self 
     end
     
     def remove_child(child)
@@ -52,8 +44,7 @@ class PolyTreeNode
 
 
     def dfs(target)
-        return self if self.value == target 
-        # return nil if self.children.empty?       
+        return self if self.value == target      
         self.children.each do |child|
             # if !child.children.empty? 
             # won't run code in the block when array is empty 
@@ -68,15 +59,11 @@ class PolyTreeNode
     
     def bfs(target)
         queue = [self]
-        visited = []
-        while queue.length > 0 
-            check = queue.shift 
-            return check if check.value == target 
-            visited << check unless visited.include?(check)
-            check.children.each { |child| queue << child unless visited.include?(child) }
-            return nil if queue.empty? 
+        until queue.empty?
+            node = queue.shift 
+            return node if node.value == target 
+            queue += node.children
         end
-
     end
 #     should take correct path to descendant (FAILED - 19)
 #     behaves like search method
