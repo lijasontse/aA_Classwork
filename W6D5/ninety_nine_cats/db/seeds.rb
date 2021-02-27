@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-
+Cat.destroy_all
 
 cat1 = Cat.create!(birth_date: '2000/01/01', color: 'black', name: 'Kitty', sex: 'F')
+cat2 = Cat.create!(birth_date: '2001/02/03', color: 'grey', name: 'Meow', sex: 'M')
