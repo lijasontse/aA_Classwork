@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def new
     render :new
   end
@@ -9,6 +10,16 @@ class SessionsController < ApplicationController
     if @user
       session[:session_token] = @user.reset_session_token!
       redirect_to cats_url
+    else
+      render :new
     end
   end
+
+  def destroy
+    logout! 
+    redirect_to new_session_url
+  end
+
+
+
 end
