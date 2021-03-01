@@ -30,6 +30,16 @@ class User < ApplicationRecord
         self.password_digest = BCrypt::Password.create(password)
     end
 
+    def is_password?(password)
+        BCrypt::Password.new(self.password_digest).is_password?(password)
+        #is_password? referes to BCrypt method
+    end
+
+    def self.find_by_credentials(username, password)
+        user = User.find_by(user_name: username)
+        user && user.is_password?(password) ? user : nil
+    end
+
     private
 
     attr_reader :password
