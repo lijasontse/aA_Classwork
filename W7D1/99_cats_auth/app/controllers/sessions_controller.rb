@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(params[:user][:user_name], params[:user][:password])
 
     if @user
-      session[:session_token] = @user.reset_session_token!
+      login!(@user)
+      # session[:session_token] = @user.reset_session_token!
       redirect_to cats_url
     else
       render :new
@@ -19,7 +20,4 @@ class SessionsController < ApplicationController
     logout! 
     redirect_to new_session_url
   end
-
-
-
 end
