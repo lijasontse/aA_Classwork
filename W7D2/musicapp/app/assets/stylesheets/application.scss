@@ -1,0 +1,77 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+html, body, section, article,
+article, h1, h2, 
+p, nav, main, figure, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  font: inherit;
+  font-weight: inherit;
+  background: transparent;
+  text-align: inherit;
+  text-decoration: inherit;
+  color: inherit;
+  vertical-align: baseline;
+  box-sizing: content-box;
+  font-family: 'Advent Pro', sans-serif;
+}
+
+
+.main-logo {
+    font-size: 75px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    color: blanchedalmond;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: honeydew;
+    margin-bottom: 20px;
+}
+
+.page-header {
+    font-size: 45px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    color: olive;
+}
+
+.button {
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: olive;
+    color: #000;
+    margin-bottom: 20px;
+
+    &:hover {
+        background-color: grey;
+        cursor: pointer;
+    }
+}
+
+body {
+    background-color: tan;
+    background-size: contain;
+}

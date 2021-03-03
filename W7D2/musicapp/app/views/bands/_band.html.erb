@@ -1,0 +1,9 @@
+<% if action == 'show' %>
+    <a href="<%= bands_url %>">Band's Index Link</a>
+<% else %>
+    <a href="<%= band_url(band) %>">Band's Show Link</a>
+<% end %>
+
+<ul>
+    <li><%= band.name %></li>
+</ul>

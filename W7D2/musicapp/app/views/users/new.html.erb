@@ -1,0 +1,26 @@
+<h1 class='page-header'>New User</h1>
+
+<a class='button' href=<%= new_session_url %> >Go to sign-in</a>
+
+<%= render 'shared/errors' %>
+
+<form action="<%= users_url %>" method="post">
+    <input 
+    type="hidden" 
+    name="authenticity_token" 
+    value="<%= form_authenticity_token %>"> 
+
+    <label>Email:
+        <input type="text" name="user[email]" value="<%= @user.email %>">
+    </label>
+
+    <br>
+
+    <label>Password:
+        <input type="password" name="user[password]" value="">
+    </label>
+
+    <br>
+
+    <input type="submit" value="Submit">
+</form>

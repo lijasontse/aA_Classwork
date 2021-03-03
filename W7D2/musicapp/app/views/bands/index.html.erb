@@ -1,0 +1,14 @@
+<h1 class='page-header'>Bands</h1>
+
+<ul>
+    <% @bands.each do |band| %>
+    <li>
+        <%= render "band", band: band, action: 'index' %>
+    </li>
+    <% end %>
+</ul>
+
+<li>
+    <a class='button' href="<%= new_band_url %>">Create New Band</a>
+
+</li>

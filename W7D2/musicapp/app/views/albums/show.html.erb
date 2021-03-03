@@ -1,0 +1,17 @@
+<h1 class='page-header'><%= @album.name %></h1>
+
+<li>
+    <a class='button' href="<%= edit_album_url(@album) %>">Edit Album</a>
+</li>
+
+<form action="<%= album_url(@album) %>" method="post">
+    <input type="hidden" 
+        name="authenticity_token" 
+        value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Album">
+</form>
+
+<li>
+    <a class='button' href="<%= band_url(@album.band) %>">Back to <%= @album.band.name %></a>
+</li>

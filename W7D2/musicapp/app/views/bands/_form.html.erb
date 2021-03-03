@@ -1,0 +1,27 @@
+<% if type == 'new' %>
+    <% action_url = bands_url %>
+    <% button_text = 'Create Band' %>
+<% else %>
+    <% action_url = band_url(band) %>
+    <% button_text = 'Edit Band' %>
+<% end %>
+
+<form action="<%= action_url %>" method="post">
+    <input 
+        type="hidden"
+        name="authenticity_token"
+        value="<%= form_authenticity_token %>">
+    
+    <% if type == 'edit' %>
+        <input type="hidden" name="_method" value="patch">
+    <% end %>
+
+    <label>Name:
+        <input type="text" name="band[name]" value="<%= band.name %>">
+    </label>
+
+    <br>
+
+    <input type="submit" value="<%= button_text %>">
+
+</form>
